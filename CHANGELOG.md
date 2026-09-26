@@ -22,8 +22,9 @@ The first release.
   returns them all. A pattern with no fixed byte falls back to scalar.
 - **A page-aware region scanner.** `scanReader` reads a region page by page
   through a `MemoryReader` and carries a tail between windows, so a match that
-  straddles a page or window boundary is found once. An unreadable page ends
-  the run; no match spans a gap that cannot be read.
+  straddles a page or window boundary is found once. An unreadable page is
+  skipped and the scan goes on past it; no match spans a gap that cannot be
+  read.
 - **On-disk PE scanning.** `scanPeFile` scans a PE's raw bytes and reports each
   match by file offset and, where the offset is backed by a section or the
   headers, its RVA.

@@ -101,7 +101,7 @@ TEST_CASE("scanPeFile maps a .text match to the right RVA and file offset", "[pe
     std::filesystem::remove(path);
 }
 
-TEST_CASE("scanPeFile maps a header match 1:1 and honours firstOnly", "[pe]") {
+TEST_CASE("scanPeFile maps a header match 1:1 and honors firstOnly", "[pe]") {
     const std::string path = writeTemp(buildPe());
     const auto p = parse("5A 5B 5C 5D");
     REQUIRE(p);

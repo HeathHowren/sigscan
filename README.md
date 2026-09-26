@@ -17,7 +17,7 @@ Signature Lab writes are the forms sigscan parses, and its resolve helpers
 mirror the resolve line Signature Lab prints.
 
 sigscan is written by Heath Howren
-([Cyborg Elf](https://www.youtube.com/c/cyborgelf)) of
+([Cyborg Elf](https://www.youtube.com/cyborgelf)) of
 [Game Reversal Club](https://gamereversal.club). It is the consumer side of
 [Signature Lab](https://github.com/HeathHowren/Signature-Lab), and the pattern
 scanner behind the signature-scanning chapter of
@@ -50,8 +50,9 @@ the Pointer Lab tutorial (`PointerLabTutorial.exe`).*
   time from the CPU. It returns the first match or all matches.
 - **Handles page boundaries and partial reads.** The region scanner reads a
   process or image page by page and carries a tail between windows, so a match
-  that straddles a boundary is found once. An unreadable page ends the run; a
-  match is never reported across a gap that could not be read.
+  that straddles a boundary is found once. An unreadable page is skipped and
+  the scan goes on past it. A match is never reported across a gap that could
+  not be read.
 - **Scans an on-disk PE.** It reports each match by file offset and by RVA, so
   a signature can be checked against a file before the program is running.
 - **Scans a live process module on Windows.** It attaches read-only, finds the

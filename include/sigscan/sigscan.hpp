@@ -758,8 +758,8 @@ inline std::optional<std::size_t> scanAvx2(const std::uint8_t* h, std::size_t hl
 //
 // scanReader reads the region in windows and carries a (pattern length - 1)
 // byte tail between them, so a match that straddles a window or page boundary
-// is found exactly once. An unreadable page ends the current run: no match can
-// span a gap that cannot be read.
+// is found exactly once. An unreadable page is skipped and the scan goes on
+// past it. No match can span a gap that cannot be read.
 // ---------------------------------------------------------------------------
 
 class MemoryReader {
@@ -828,7 +828,7 @@ inline std::vector<std::uint64_t> scanReader(const MemoryReader& reader, std::ui
                 flush(true);
             }
         } else {
-            // Unreadable page: finish the run so far, then start fresh past it.
+            // Unreadable page: scan what was read so far, then start fresh past it.
             flush(false);
             bufStart = addr + chunk;
             addr += chunk;
