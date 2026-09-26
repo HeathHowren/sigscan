@@ -38,3 +38,5 @@ The first release.
   `--limit`. The pattern may be in any of the parsed forms.
 - The library is one header, `include/sigscan/sigscan.hpp`, C++20, with no
   third-party dependencies. The C runtime is linked statically into the CLI.
+
+[1.0.0]: https://github.com/HeathHowren/sigscan/releases/tag/v1.0.0
